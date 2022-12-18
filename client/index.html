@@ -238,7 +238,8 @@
 				<div class="w3-card w3-round w3-white w3-center">
 					<div class="w3-container">
 						<p>Images:</p>
-						<p>cridex.vmem</p>
+						
+						<input id="imgElm" type="text" style="width: 100%;">
 						<p><button class="w3-button w3-block w3-theme-l4">Info</button></p>
 					</div>
 				</div>
@@ -271,7 +272,9 @@
 	<script>
 		const selectElm = document.getElementById("selectElm");
 		const resultCtn = document.getElementById("resultCtn");
-		// Accordion
+		const imgElm = document.getElementById("imgElm");
+
+	
 		function myFunction(id) {
 			var x = document.getElementById(id);
 			if (x.className.indexOf("w3-show") == -1) {
@@ -361,11 +364,12 @@
 		function runCommand(){
 			resultCtn.innerHTML = "";
 			const command = selectElm.value;
-
+			const img = imgElm.value;
+			
 			sendMess({
 				action: "RUN_COMMAND",
 				data: {
-					image: "cridex.vmem",
+					image: img,
 					command: command
 				}
 			})
